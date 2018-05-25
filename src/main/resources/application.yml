@@ -1,0 +1,49 @@
+# Active profiles
+spring:
+  profiles:
+    active:
+# MySQL
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+# Message file
+  messages:
+    basename: i18n/Messages_ja
+
+# Server
+server:
+  context-path: /isms
+  port: 8080
+
+# Log
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+  config: classpath:log4j2.yml
+
+# DataSource
+isms:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/isms?characterEncoding=UTF-8&serverTimezone=JST
+    username: root
+    password: root
+    pool:
+      max: 10
+      min: 5
+      initial: 5
+      timeout:
+        idle: 1800000
+        max: -1
+    transaction:
+      timeout: 60
+
+  # Spring security
+security:
+  basic:
+    enabled: false

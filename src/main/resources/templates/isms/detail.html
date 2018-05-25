@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>ユーザー情報画面</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="content">
+			<div id="info">
+				<div class="block-right">
+					<div class="block">
+						<div class="Heading_small">ユーザー情報</div>
+						<p th:if="${user.userId} != null" th:text="ユーザーID： + ${user.userId}" />
+						<p th:if="${user.password} != null" th:text="パスワード： + ${user.password}" />
+						<p th:if="${user.userName} != null" th:text="ユーザー名： + ${user.userName}" />
+						<p th:if="${user.age} != null" th:text="年齢： + ${user.age}" />
+						<p th:if="${user.address} != null" th:text="住所： + ${user.address}" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

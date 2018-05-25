@@ -1,0 +1,26 @@
+Configuration:
+  status: "WARN"
+  Appenders:
+    Console:
+      name: "console"
+      PatternLayout:
+        pattern: "%d{yyyy/MM/dd HH:mm:ss.SSS} %-5level - %m%n"
+    RollingFile:
+      - name: "api"
+        fileName: "/var/log/isms/sqlinjection_test.log"
+        filePattern: "/var/log/isms/sqlinjection_test.log.%d{yyyyMMdd}.gz"
+        PatternLayout:
+          pattern: "%d{yyyy/MM/dd HH:mm:ss.SSS} %-5level [%u] %thread - %m%n"
+        Policies:
+          TimeBasedTriggeringPolicy: {}
+  Loggers:
+    Logger:
+      - name: "org.springframework.web"
+        level: "debug"
+      - name: "org.hibernate.SQL"
+        level: "debug"
+    Root:
+      level: "info"
+      AppenderRef:
+        - ref: "console"
+        - ref: "api"

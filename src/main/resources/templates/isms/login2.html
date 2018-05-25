@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>ログイン</title>
+</head>
+<body>
+	<div id="login-block">
+		<div class="container form-signin">
+
+			<h2 class="form-signin-heading">テスト(SQLインジェクション対応版)</h2>
+
+			<form th:action="@{/sqlinjection/login2}" method="post">
+				<div th:if="${errmsg} != null" th:text="${errmsg}" class="text-red">Incorrect date</div>
+
+				<div>
+					<label class="control-label" for="focusedInput">ユーザーID</label>
+					<input type="text" id="username" class="form-control" placeholder="ユーザーID" name="userId" th:value="${user.userId}" maxlength="20" value="" />
+				</div>
+				<div>
+					<label class="control-label" for="focusedInput">パスワード</label>
+					<input type="password" id="password" class="form-control" placeholder="パスワード" name="password" th:value="${user.password}" maxlength="128" value="" />
+				</div>
+				<div>
+					<span>
+						<input type="submit" id="supportLogin" class="btn btn-info disableSubmit" value="ログイン" />
+					</span>
+					<span>
+						<a th:href="@{/sqlinjection/login}">SQLインジェクション非対応はこっち</a>
+					</span>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
